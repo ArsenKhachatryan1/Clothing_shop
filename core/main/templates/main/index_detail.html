@@ -1,0 +1,75 @@
+{% extends 'main/base.html' %}
+{% block title %}Product{% endblock %}
+  {% block body %}
+    <!-- Page Content -->
+    <div style="background-image: url({{ product_title.img.url }});" class="page-heading products-heading header-text">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-content">
+              <h4>{{ product_title.title }}</h4>
+              <h2>{{ product_title.subtitle }}</h2>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="products">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="filters">
+              <ul>
+                  <a href="{% url 'products' %}"><li class="" data-filter="*">All Products</li></a>
+                  {% for i in product_category %}
+                    <a href="{% url 'index_detail' i.id %}"><li data-filter=".des">{{ i.name }}</li></a>
+                    <!-- <li data-filter=".dev">Flash Deals</li>
+                    <li data-filter=".gra">Last Minute</li> -->
+                  {% endfor %}
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="filters-content">
+                <div class="row grid">
+                    {% for i in prod_list %}
+                        {% for j in i.cat_prod.all %}
+                            <div class="col-lg-4 col-md-4 all des">
+                                <div class="product-item">
+                                  <a href="#"><img src="{{ j.img.url }}" alt=""></a>
+                                  <div class="down-content">
+                                    <a href="#"><h4>{{ j.name }}</h4></a>
+                                    <h6>{{ j.price }}</h6>
+                                    <p>{{ j.text }}</p>
+                                    <ul class="stars">
+                                      <li><i class="fa fa-star"></i></li>
+                                      <li><i class="fa fa-star"></i></li>
+                                      <li><i class="fa fa-star"></i></li>
+                                      <li><i class="fa fa-star"></i></li>
+                                      <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                    <span>Reviews (12)</span>
+                                  </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    
+                </div>
+              </div>
+              <div class="col-md-12">
+                <ul class="pages">
+                  <li><a href="#">1</a></li>
+                  <li class="active"><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+    {% endblock %}

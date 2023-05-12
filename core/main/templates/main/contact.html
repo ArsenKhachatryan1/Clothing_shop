@@ -1,0 +1,133 @@
+{% extends 'main/base.html' %}
+{% block title %}Contact{% endblock %}
+    {% block body %}
+      <!-- Page Content -->
+      <div style="background-image: url({{ contact_get.img.url }});" class="page-heading contact-heading header-text">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="text-content">
+                <h4>{{ contact_get.general_title }}</h4>
+                <h2>{{ contact_get.general_subtitle }}</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="find-us">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-heading">
+                <h2>{{ contact_get.title1 }}</h2>
+              </div>
+            </div>
+            <div class="col-md-8">
+        <!-- How to change your own map point
+        	1. Go to Google Maps
+        	2. Click on your location point
+        	3. Click "Share" and choose "Embed map" tab
+        	4. Copy only URL and paste it within the src="" field below
+        -->
+              <div id="map">
+                <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="330px" frameborder="0" style="border:0" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="left-content">
+                <h4>{{ contact_get.subtitle }}</h4>
+                <p>{{ contact_get.text1 }}<br><br>{{ contact_get.text2 }}</p>
+                <ul class="social-icons">
+                  <li><a href="{{ contact_get.social_url1 }}"><i class="fa fa-{{ contact_get.social1 }}"></i></a></li>
+                  <li><a href="{{ contact_get.social_url2 }}"><i class="fa fa-{{ contact_get.social2 }}"></i></a></li>
+                  <li><a href="{{ contact_get.social_url3 }}"><i class="fa fa-{{ contact_get.social3 }}"></i></a></li>
+                  <li><a href="{{ contact_get.social_url4 }}"><i class="fa fa-{{ contact_get.social4 }}"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="send-message">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-heading">
+                <h2>{{ contact_get.title2 }}</h2>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="contact-form">
+                <form id="contact" method="post">
+                  {% csrf_token %}
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <fieldset>
+                        <input name="user_name" type="hidden" class="form-control" id="name" placeholder="{{ contact_get.inp1 }}" value="{{ user.username }}" required="">
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <fieldset>
+                        <input name="user_email" type="hidden" class="form-control" id="email" placeholder="{{ contact_get.inp2 }}" value="{{ user.email }}" required="">
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <fieldset>
+                        <input name="subject" type="text" class="form-control" id="subject" placeholder="{{ contact_get.inp3 }}" required="">
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <textarea name="message" rows="6" class="form-control" id="message" placeholder="{{ contact_get.inp4 }}" required=""></textarea>
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <button type="submit" id="form-submit" class="filled-button">{{ contact_get.btn_name }}</button>
+                      </fieldset>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <ul class="accordion">
+                {% for i in contact_info %}
+                  <li>
+                      <a>{{ i.title }}</a>
+                      <div class="content">
+                          <p>{{ i.text1 }}<br><br>{{ i.text2 }}</p>
+                      </div>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="happy-clients">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-heading">
+                <h2>{{ contact_get.title3 }}</h2>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="owl-clients owl-carousel">
+                {% for i in customers %}
+                  <div class="client-item">
+                    <img src="{{ i.img.url }}" alt="1">
+                  </div>
+                {% endfor %}                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  {% endblock %}

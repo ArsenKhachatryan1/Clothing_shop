@@ -1,0 +1,128 @@
+{% extends 'main/base.html' %}
+{% block title %}About{% endblock %}
+  {% block body %}
+    <!-- Page Content -->
+    <div style="background-image: url({{ about_page.img1.url }});" class="page-heading about-heading header-text">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-content">
+              <h4>{{ about_page.general_title }}</h4>
+              <h2>{{ about_page.general_subtitle }}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="best-features about-features">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2>{{ about_page.title1 }}</h2>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="right-image">
+              <img src="{{ about_page.img2.url }}" alt="">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="left-content">
+              <h4>{{ about_page.subtitle }}</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur similique? Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem perferendis dicta dolorem non blanditiis ex fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti eum ratione ex ea praesentium quibusdam? Aut, in eum facere corrupti necessitatibus perspiciatis quis.</p>
+              <ul class="social-icons">
+                <li><a href="{{ about_page.social_url1 }}"><i class="fa fa-{{ about_page.social1 }}"></i></a></li>
+                <li><a href="{{ about_page.social_url2 }}"><i class="fa fa-{{ about_page.social2 }}"></i></a></li>
+                <li><a href="{{ about_page.social_url3 }}"><i class="fa fa-{{ about_page.social3 }}"></i></a></li>
+                <li><a href="{{ about_page.social_url4 }}"><i class="fa fa-{{ about_page.social4 }}"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="team-members">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2>{{ about_page.title2 }}</h2>
+            </div>
+          </div>
+          {% for i in team_content %}
+            <div class="col-md-4">
+              <div class="team-member">
+                <div class="thumb-container">
+                  <img src="{{ i.img.url }}" alt="">
+                  <div class="hover-effect">
+                    <div class="hover-content">
+                      <ul class="social-icons">
+                        <li><a href="{{ i.social_url1 }}"><i class="fa fa-{{ i.social1 }}"></i></a></li>
+                        <li><a href="{{ i.social_url2 }}"><i class="fa fa-{{ i.social2 }}"></i></a></li>
+                        <li><a href="{{ i.social_url3 }}"><i class="fa fa-{{ i.social3 }}"></i></a></li>
+                        <li><a href="{{ i.social_url4 }}"><i class="fa fa-{{ i.social4 }}"></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="down-content">
+                  <h4>{{ i.title }}</h4>
+                  <span>{{ i.subtitle }}</span>
+                  <p>{{ i.text }}</p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+
+    <div style="background-image: url({{ about_page.img3.url }});" class="services">
+      <div class="container">
+        <div class="row">
+          {% for i in about_content %}
+            <div class="col-md-4">
+              <div class="service-item">
+                <div class="icon">
+                  <i class="fa fa-gear"></i>
+                </div>
+                <div class="down-content">
+                  <h4>{{ i.title }}</h4>
+                  <p>{{ i.text }}</p>
+                  <a href="#" class="filled-button">{{ i.btn_name }}</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+
+    <div class="happy-clients">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2>Happy Partners</h2>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="owl-clients owl-carousel">
+              {% for i in partners %}
+                <div class="client-item">
+                  <img src="{{ i.img.url }}" alt="1">
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
